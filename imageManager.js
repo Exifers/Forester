@@ -14,7 +14,7 @@ class ImageManager {
   }
   getFromPath(image_path) {
     for (var data of this.image_datas) {
-      if (data.path == image_path) {
+      if (data.path.localeCompare(image_path) == 0) {
         if (data.image == null) {
           data.image = ImageManager.loadImage(data.path);
         }
@@ -27,8 +27,10 @@ class ImageManager {
   }
   reload(image_path) {
     for (var data of this.image_datas) {
-      if (data.path == image_path) {
+      if (data.path.localeCompare(image_path) == 0) {
+        if (data.image == null) {
           data.image = ImageManager.loadImage(data.path);
+        }
         return data.image;
       }
     }

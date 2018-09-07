@@ -44,10 +44,8 @@ class MapGenerator {
       var new_element = new Element(randomPos, element_data.path);
       if (!elements.some((e) => {return e.overlap(new_element)})) {
         elements.push(new_element);
-        console.log("added");
         return;
       }
-      console.log("retry");
     }
   }
   createRandomPos(element_data) {
@@ -90,12 +88,16 @@ var mapGenData;
 setupManager.add_function(() => {
   mapGenData = {
     dimensions: createVector(screen.width, screen.height),
-    density: 0.6,
+    density: 0.2,
     elements: [
-        {path: "assets/stones.png", relCount: 8},
-        {path: "assets/gold_mine.png", relCount: 2},
-        {path: "assets/oak.png", relCount: 10},
-        {path: "assets/spruce.png", relCount: 5}
+        {path: "assets/stones.png", relCount: 5},
+        {path: "assets/gold_mine.png", relCount: 5},
+        {path: "assets/oak.png", relCount: 5},
+        {path: "assets/spruce.png", relCount: 5},
+        {path: "assets/house.png", relCount: 5},
+        {path: "assets/beaver_burrow.png", relCount: 5},
+        {path: "assets/grass.png", relCount: 20},
+        {path: "assets/oak_log.png", relCount: 5},
       ]
   };
   mapGenerator = new MapGenerator(mapGenData);
